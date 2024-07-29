@@ -123,7 +123,9 @@ impl Window {
             Direction::Right => {
                 let current_line = &self.buffer.lines[self.offset_y + usize::from(self.cursor_y)];
 
-                if usize::from(self.cursor_x) + self.offset_x == current_line.len() {
+                if usize::from(self.cursor_x) + self.offset_x == current_line.len()
+                    && usize::from(self.cursor_y) + self.offset_y < self.buffer.lines.len() - 1
+                {
                     self.cursor_x = 0;
                     self.offset_x = 0;
                     self.cursor_y += 1;
