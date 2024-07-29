@@ -1,5 +1,5 @@
 use std::io::{self};
-use std::path::Path;
+
 use std::rc::Rc;
 
 use crate::buffer::Buffer;
@@ -18,7 +18,7 @@ pub struct Editor {
 impl Editor {
     #[must_use]
     pub fn new(buffer: Rc<Buffer>) -> Editor {
-        let window = Window::new(buffer);
+        let window = Window::new(buffer, 40, 40);
 
         Editor {
             window,
