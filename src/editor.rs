@@ -64,9 +64,13 @@ impl Editor {
             self.window.render(&mut self.stdout)?;
         }
 
-        crossterm::terminal::disable_raw_mode()?;
-        execute!(self.stdout, LeaveAlternateScreen)?;
-
         Ok(())
+    }
+}
+
+impl Drop for Editor {
+    fn drop(&mut self) {
+        crossterm::terminal::disable_raw_mode().ok();
+        execute!(self.stdout, LeaveAlternateScreen).ok();
     }
 }
