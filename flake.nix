@@ -31,7 +31,15 @@
                 "rust-analyzer"
               ];
             })
-          ] ++ lib.optional stdenv.isDarwin darwin.apple_sdk.frameworks.Security;
+          ] ++ lib.optional stdenv.isDarwin [
+              darwin.apple_sdk.frameworks.Security
+              darwin.apple_sdk.frameworks.CoreServices
+              darwin.apple_sdk.frameworks.CoreFoundation
+              darwin.apple_sdk.frameworks.Foundation
+              darwin.apple_sdk.frameworks.AppKit
+              darwin.apple_sdk.frameworks.WebKit
+              darwin.apple_sdk.frameworks.Cocoa
+            ];
         };
       }
     );
